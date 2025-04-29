@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+.venv
+venv/
+build/
+dist/
+*.egg-info/
+.ropeproject/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Whisper.cpp
+models/
+*.bin
+*.wav
+*.mp3
+*.ogg
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Misc
+*.bak
+*.tmp 
