@@ -1,0 +1,14 @@
+[project]
+name = "whisper-server"
+version = "0.1.0"
+description = "HTTP сервер для транскрипции аудио с использованием OpenAI Whisper"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.24.0",
+    "python-multipart>=0.0.6",
+    "torch>=2.0.0",
+    "faster-whisper>=1.0.0",
+    "python-dotenv>=1.0.0",
+]
