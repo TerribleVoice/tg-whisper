@@ -1,0 +1,7 @@
+{
+    "whisper": {
+        "beam_size": 5,
+        "best_of": 5,
+        "download_root": null
+    }
+}
