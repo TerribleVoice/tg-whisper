@@ -1,0 +1,16 @@
+[project]
+name = "whisper-model"
+version = "0.1.0"
+description = "Обертка для whisperx и других моделей"
+authors = [{ name = "your_name" }]
+dependencies = [
+    "pydantic",
+    "whisperx"
+]
+requires-python = ">=3.8"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"] 

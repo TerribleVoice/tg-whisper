@@ -49,7 +49,11 @@ class GPUMonitor:
             return {"max_memory_used_mb": 0.0, "avg_utilization": 0.0}
 
         max_memory_used = max(self.stats["memory_used"])
-        avg_utilization = float(np.mean(self.stats["utilization"])) if self.stats["utilization"] else 0.0
+        avg_utilization = (
+            float(np.mean(self.stats["utilization"]))
+            if self.stats["utilization"]
+            else 0.0
+        )
 
         return {
             "max_memory_used_mb": round(max_memory_used / (1024 * 1024), 2),
@@ -93,5 +97,7 @@ class GPUMonitor:
                 utilization_sum += float(utilization.gpu)
 
             self.stats["memory_used"].append(memory_used)
-            avg_utilization = utilization_sum / self.device_count if self.device_count > 0 else 0.0
+            avg_utilization = (
+                utilization_sum / self.device_count if self.device_count > 0 else 0.0
+            )
             self.stats["utilization"].append(avg_utilization)

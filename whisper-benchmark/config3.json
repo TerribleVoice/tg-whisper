@@ -1,0 +1,32 @@
+{
+    "whisper_configs": [
+        {
+            "config_name": "batch_16_no_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                }
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            },
+            "audio_batch_size": 16
+        }
+    ],
+    "local_dataset": {
+        "path": "C:\\Users\\Миша\\Desktop\\whisper bench\\long+short",
+        "limit": 16
+    },
+    "results_path": "C:\\Users\\Миша\\Desktop\\whisper bench\\long+short\\results",
+    "repeat_count": 1
+}

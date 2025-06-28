@@ -1,0 +1,10 @@
+[project]
+name = "whisper-consumer-worker"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "dramatiq[rabbitmq]>=1.10.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.23.0",
+    "librosa>=0.10.0",
+] 

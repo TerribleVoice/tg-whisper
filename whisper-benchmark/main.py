@@ -1,48 +1,42 @@
-import argparse
+import ctypes
+import json
 import logging
 import os
 
-from app import Benchmark, Config
-
+from app import Benchmark, BenchmarkConfig
 
 logging.basicConfig(
     level="INFO",
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[logging.StreamHandler(), logging.FileHandler("whisper-benchmark.log", encoding="utf-8")],
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("whisper-benchmark.log", encoding="utf-8"),
+    ],
 )
 logging.getLogger("faster_whisper").setLevel(logging.WARNING)
+logging.getLogger("speechbrain.utils.fetching").setLevel(logging.WARNING)
+logging.getLogger("speechbrain.utils.checkpoints").setLevel(logging.WARNING)
+logging.getLogger("speechbrain.utils.parameter_transfer").setLevel(logging.WARNING)
+logging.getLogger("pytorch_lightning.utilities.upgrade_checkpoint").setLevel(logging.WARNING)
 
 
 def prevent_sleep():
     if os.name == "nt":
-        import ctypes
-
         ctypes.windll.kernel32.SetThreadExecutionState(0x80000002)
 
 
 def restore_sleep():
     if os.name == "nt":
-        import ctypes
-
         ctypes.windll.kernel32.SetThreadExecutionState(0x80000000)
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Бенчмарк для whisper-server")
-    parser.add_argument("--config", type=str, default="config.json", help="Путь к файлу конфигурации (по умолчанию: config.json)")
-    return parser.parse_args()
-
-
 def main():
-    args = parse_args()
-
     logger = logging.getLogger("whisper-benchmark")
-    logger.info("Запуск бенчмарка whisper-server")
-    logger.info(f"Файл конфигурации: {args.config}")
+    logger.info("Запуск бенчмарка whisper-consumer")
 
     prevent_sleep()
     try:
-        config = Config(args.config)
+        config = BenchmarkConfig(**json.load(open("config.json", "r", encoding="utf-8")))
         benchmark = Benchmark(config)
         benchmark.run()
 

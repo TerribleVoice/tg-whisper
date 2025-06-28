@@ -1,0 +1,20 @@
+{
+    "whisper_config": {
+        "whisper_arch": "large-v3-turbo",
+        "device": "cpu",
+        "compute_type": "int8",
+        "transcribe_options": {
+            "batch_size": 4
+        },
+        "asr_options": {
+            "beam_size": 2,
+            "best_of": 2
+        }
+    },
+    "segmentation_config": {
+        "peak_config": {}
+    },
+    "align_config": {
+        "model_name": "bond005/wav2vec2-base-ru"
+    }
+}

@@ -1,0 +1,10 @@
+[project]
+name = "telegram-bot-consumer"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "aiogram>=3.0.0",
+    "python-dotenv>=1.0.0",
+    "aiohttp>=3.8.0",
+    "dramatiq[rabbitmq]>=1.10.0", # Указываем rabbitmq как зависимость dramatiq
+] 

@@ -1,53 +1,142 @@
 {
     "whisper_configs": [
         {
-            "name": "v3_turbo_f16_beam_2_faster_whisper",
-            "model_name": "large-v3-turbo",
-            "device": "cuda",
-            "compute_type": "float16",
-            "beam_size": 2,
-            "library": "faster_whisper"
+            "config_name": "deafult_single_no_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                }
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            }
         },
         {
-            "name": "v3_turbo_i8_f16_batch_4_whisperx",
-            "model_name": "large-v3-turbo",
-            "device": "cuda",
-            "compute_type": "int8_float16",
-            "library": "whisperx",
-            "batch_size": 4
+            "config_name": "deafult_single_ru_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                },
+                "language": "ru"
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            }
         },
         {
-            "name": "v3_turbo_i8_f16_batch_8_whisperx",
-            "model_name": "large-v3-turbo",
-            "device": "cuda",
-            "compute_type": "int8_float16",
-            "library": "whisperx",
-            "batch_size": 8
+            "config_name": "batch_4_no_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                }
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            },
+            "audio_batch_size": 4
         },
         {
-            "name": "v3_turbo_i8_f16_batch_8_whisperx",
-            "model_name": "large-v3-turbo",
-            "device": "cuda",
-            "compute_type": "int8_float16",
-            "library": "whisperx",
-            "batch_size": 16
+            "config_name": "batch_4_ru_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                },
+                "language": "ru"
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            },
+            "audio_batch_size": 4
         },
         {
-            "name": "small_f16_batch_16_whisperx",
-            "model_name": "small",
-            "device": "cuda",
-            "compute_type": "float16",
-            "library": "whisperx",
-            "batch_size": 16
+            "config_name": "batch_8_no_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                }
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            },
+            "audio_batch_size": 8
+        },
+        {
+            "config_name": "batch_16_no_lang",
+            "whisper_config": {
+                "whisper_arch": "large-v3-turbo",
+                "device": "cuda",
+                "compute_type": "int8_float16",
+                "transcribe_options": {
+                    "batch_size": 4
+                },
+                "asr_options": {
+                    "beam_size": 2,
+                    "best_of": 2
+                }
+            },
+            "segmentation_config": {
+                "peak_config": {}
+            },
+            "align_config": {
+                "model_name": "bond005/wav2vec2-base-ru"
+            },
+            "audio_batch_size": 16
         }
     ],
-    "source_path": "C:\\Users\\Миша\\Desktop\\whisper bench\\dataset",
-    "repeat_count": 1,
-    "dataset": {
-        "dataset_path": "fsicoli/common_voice_17_0",
-        "dataset_name": "ru",
-        "dataset_split": "train",
-        "dataset_cache_dir": "C:/Datasets/Common_Voice_Rus",
-        "dataset_limit": 150
-    }
+    "local_dataset": {
+        "path": "C:\\Users\\Миша\\Desktop\\whisper bench\\long+short",
+        "shuffle": true
+    },
+    "results_path": "C:\\Users\\Миша\\Desktop\\whisper bench\\long+short\\results",
+    "repeat_count": 5
 }
